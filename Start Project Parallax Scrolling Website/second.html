@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Energy Exchange</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: rgb(15,55,47);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            background: linear-gradient(to bottom, rgba(30, 58, 95, 0.8), transparent);
+        }
+
+              
+        h2.logo{
+            margin-left: 60px;
+        }
+
+        .logo {
+            font-size: 2em;
+            color: #ffff;
+            pointer-events: none;
+        }
+        .navigation{
+            margin-right: 110px;
+        }
+        .navigation a {
+            text-decoration: none;
+            color: #ffff;
+            padding: 6px 15px;
+            border-radius: 20px;
+            margin: 0 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navigation a:hover,
+        .navigation a.active {
+            background: #359381;
+            color: #ffff;
+        }
+
+        .parallax-container {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mountain-landscape-nature-background-in-green-travel-adventure-illustration-vector-iBvZkPPScO6h4bXj5shud53YadaK8P.jpg');
+            background-size: cover;
+            background-position: center;
+            transform: translateY(0);
+            will-change: transform;
+        }
+
+        .parallax-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .parallax-content h1 {
+            font-size: 4em;
+            margin-bottom: 0.2em;
+        }
+
+        .parallax-content p {
+            font-size: 1.5em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            background: rgb(15,55,47);
+background: linear-gradient(125deg, rgba(15,55,47,1) 0%, rgba(24,86,73,1) 35%, rgba(24,86,73,1) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #fff;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+      
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .image-placeholder {
+            height: 350px;
+            border-radius: 10px;
+            background: none; /* Removes the background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Ensures the image fits within the rounded borders */
+        }
+
+        .image-placeholder img {
+            height: 100%;
+            width: auto; /* Ensures the image scales proportionally */
+            border-radius: inherit; /* Applies the same border-radius to the image */
+            filter: blur(0.5px);
+        }
+        .energy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .energy-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .energy-card:hover {
+            transform: scale(1.05);
+        }
+
+        .energy-card .icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .energy-card h3 {
+            color: #a8edea;
+            margin-bottom: 10px;
+        }
+
+        .energy-card .rate {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2d9596;
+            margin-bottom: 10px;
+        }
+
+        form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #a8edea;
+            background: rgb(91 188 135 / 95%);
+            border-radius: 5px;
+            font-size: 1em;
+            color: #fff;
+        }
+
+        button {
+            background: #2d9596;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #1e3a5f;
+        }
+
+        .estimated-amount {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #a8edea;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #1e3a5f;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            color: #fff;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+            }
+
+            .grid, .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-placeholder {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo">ACE KABOO</h2>
+        <nav class="navigation">
+            <a href="index.html" class = "active">Home</a>
+            <a href="second.html">Seller</a>
+            <a href="third.html">Buyer</a>
+        </nav>
+    </header>
+
+    <div class="parallax-container">
+        <div class="parallax-bg"></div>
+        <div class="parallax-content">
+            <h1>Seller Point</h1>
+            <p>Empowering a Sustainable Future</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>About Green Energy Exchange</h2>
+            <div class="grid">
+                <div>
+                    <p>Green Energy Exchange is a pioneering platform that connects individuals and businesses generating excess green energy with those seeking to purchase clean, renewable power. Our mission is to accelerate the transition to a sustainable energy future by creating a marketplace that rewards green energy producers and provides accessible clean energy options to consumers.</p>
+                    <p>By facilitating the exchange of locally produced renewable energy, we're not only reducing reliance on fossil fuels but also empowering communities to take control of their energy production and consumption. This peer-to-peer approach to energy distribution promotes energy independence, reduces transmission losses, and supports the growth of decentralized, resilient energy systems.</p>
+                </div>
+                <div class="image-placeholder">
+                    <img src="windmill.jpg" id = "windmill">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Natural Energy Sources</h2>
+            <div class="energy-grid">
+                <div class="energy-card">
+                    <div class="icon">☀️</div>
+                    <h3>Solar</h3>
+                    <p class="rate">$0.10/kWh</p>
+                    <p>Clean, renewable energy harnessed directly from the sun.</p>
+                </div>
+                <div class="energy-card">
+                    <div class="icon">💨</div>
+                    <h3>Wind</h3>
+                    <p class="rate">$0.08/kWh</p>
+                    <p>Sustainable power generated by wind turbines.</p>
+                </div>
+                <div class="energy-card">
+                    <div class="icon">💧</div>
+                    <h3>Hydro</h3>
+                    <p class="rate">$0.12/kWh</p>
+                    <p>Renewable energy produced from flowing water.</p>
+                </div>
+                <div class="energy-card">
+                    <div class="icon">🌋</div>
+                    <h3>Geothermal</h3>
+                    <p class="rate">$0.15/kWh</p>
+                    <p>Heat energy extracted from beneath the Earth's surface.</p>
+                </div>
+                <div class="energy-card">
+                    <div class="icon">🌿</div>
+                    <h3>Biomass</h3>
+                    <p class="rate">$0.11/kWh</p>
+                    <p>Energy derived from organic matter and plant-based materials.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Contribute Your Green Energy</h2>
+            <div class="grid">
+                <form id="contributionForm">
+                    <div class="form-grid">
+                        <div>
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div>
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div>
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div>
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div>
+                        <label for="energyType">Energy Type</label>
+                        <select id="energyType" name="energyType" required>
+                            <option value="">Select energy type</option>
+                            <option value="solar">Solar Energy</option>
+                            <option value="wind">Wind Energy</option>
+                            <option value="hydro">Hydro Energy</option>
+                            <option value="geothermal">Geothermal Energy</option>
+                            <option value="biomass">Biomass Energy</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="energyUnits">Energy Units (kWh)</label>
+                        <input type="number" id="energyUnits" name="energyUnits" required min="0">
+                    </div>
+                    <div>
+                        <label for="frequency">Contribution Frequency</label>
+                        <select id="frequency" name="frequency" required>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="quarterly">Quarterly</option>
+                        </select>
+                    </div>
+                    <button type="submit">Calculate Estimate</button>
+                </form>
+                <div class="image-placeholder"></div>
+            </div>
+            <div id="estimatedAmount" class="estimated-amount"></div>
+        </div>
+    </div>
+
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm Your Details</h3>
+            <div id="confirmationDetails"></div>
+            <div class="modal-buttons">
+                <button id="editButton">Edit</button>
+                <button id="confirmButton">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <h3>Payment Details</h3>
+            <form id="paymentForm">
+                <div>
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="">Select payment method</option>
+                        <option value="card">Card Payment</option>
+                        <option value="upi">UPI Payment</option>
+                        <option value="netbanking">Net Banking</option>
+                    </select>
+                </div>
+                <div id="cardDetails" style="display: none;">
+                    <div>
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" name="cardNumber" required>
+                    </div>
+                    <div class="form-grid">
+                        <div>
+                            <label for="expDate">Expiration Date</label>
+                            <input type="text" id="expDate" name="expDate" placeholder="MM/YY" required>
+                        </div>
+                        <div>
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" required>
+                        </div>
+                    </div>
+                </div>
+                <div id="upiDetails" style="display: none;">
+                    <div>
+                        <label for="upiId">UPI ID</label>
+                        <input type="text" id="upiId" name="upiId" required>
+                    </div>
+                </div>
+                <div id="netbankingDetails" style="display: none;">
+                    <div>
+                        <label for="bank">Select Bank</label>
+                        <select id="bank" name="bank" required>
+                            <option value="">Select your bank</option>
+                            <option value="sbi">State Bank of India</option>
+                            <option value="hdfc">HDFC Bank</option>
+                            <option value="icici">ICICI Bank</option>
+                            <option value="axis">Axis Bank</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit">Process Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            let lastScrollY = window.pageYOffset;
+
+            window.addEventListener('scroll', () => {
+                const scrollY = window.pageYOffset;
+                const speed = 0.5;
+                parallaxBg.style.transform = `translateY(${scrollY * speed}px)`;
+                lastScrollY = scrollY;
+            });
+
+            const contributionForm = document.getElementById('contributionForm');
+            const confirmationModal = document.getElementById('confirmationModal');
+            const paymentModal = document.getElementById('paymentModal');
+            const confirmationDetails = document.getElementById('confirmationDetails');
+            const editButton = document.getElementById('editButton');
+            const confirmButton = document.getElementById('confirmButton');
+            const paymentForm = document.getElementById('paymentForm');
+            const paymentMethod = document.getElementById('paymentMethod');
+            const cardDetails = document.getElementById('cardDetails');
+            const upiDetails = document.getElementById('upiDetails');
+            const netbankingDetails = document.getElementById('netbankingDetails');
+
+            let formData = {};
+
+            contributionForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                formData = Object.fromEntries(new FormData(contributionForm));
+
+                const energyType = formData.energyType;
+                const energyUnits = parseFloat(formData.energyUnits);
+
+                const rates = { solar: 0.10, wind: 0.08, hydro: 0.12, geothermal: 0.15, biomass: 0.11 };
+                const rate = rates[energyType] || 0;
+
+                const estimate = energyUnits * rate;
+                document.getElementById('estimatedAmount').textContent = `Estimated Amount: $${estimate.toFixed(2)}`;
+
+                confirmationDetails.innerHTML = '';
+                for (const [key, value] of Object.entries(formData)) {
+                    confirmationDetails.innerHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+                }
+
+                confirmationModal.style.display = 'block';
+            });
+
+            editButton.addEventListener('click', () => {
+                confirmationModal.style.display = 'none';
+            });
+
+            confirmButton.addEventListener('click', () => {
+                confirmationModal.style.display = 'none';
+                paymentModal.style.display = 'block';
+            });
+
+            paymentMethod.addEventListener('change', (e) => {
+                cardDetails.style.display = 'none';
+                upiDetails.style.display = 'none';
+                netbankingDetails.style.display = 'none';
+
+                switch (e.target.value) {
+                    case 'card':
+                        cardDetails.style.display = 'block';
+                        break;
+                    case 'upi':
+                        upiDetails.style.display = 'block';
+                        break;
+                    case 'netbanking':
+                        netbankingDetails.style.display = 'block';
+                        break;
+                }
+            });
+
+            paymentForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Payment processed successfully! Thank you for contributing to a greener future.');
+                paymentModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === confirmationModal) {
+                    confirmationModal.style.display = 'none';
+                }
+                if (e.target === paymentModal) {
+                    paymentModal.style.display = 'none';
+                }
+            });
+        });
+        contributionForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formData = Object.fromEntries(new FormData(contributionForm));
+
+            fetch('http://127.0.0.1:5000/contribute', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                document.getElementById('estimatedAmount').textContent = 'Your contribution has been recorded.';
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+
+    </script>
+</body>
+</html>

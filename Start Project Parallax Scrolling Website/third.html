@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Energy Sources</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .parallax-header {
+            background-image: url('https://wallpaperaccess.com/full/783289.jpg');
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 2em;
+            color: #ffff;
+            pointer-events: none;
+        }
+        .navigation{
+            margin-right: 180px;
+        }
+        .navigation a {
+            text-decoration: none;
+            color: #ffff;
+            padding: 6px 15px;
+            border-radius: 20px;
+            margin: 0 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navigation a:hover,
+        .navigation a.active {
+            background: #359381;
+            color: #ffff;
+        }
+        .buyers-point {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ffff;
+            font-size: 4em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease-out;
+        }
+        .content {
+            background: rgb(16,31,38);
+background: linear-gradient(180deg, rgba(16,31,38,1) 0%, rgba(6,41,47,1) 35%, rgba(19,70,63,1) 100%);
+            color: #ffffff;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            width: calc(20% - 20px);
+            min-width: 200px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .solar { background-color: #fff9c4; }
+        .wind { background-color: #e3f2fd; }
+        .hydro { background-color: #e0f7fa; }
+        .geothermal { background-color: #ffebee; }
+        .biomass { background-color: #e8f5e9; }
+        h2 {
+            color: #004d40;
+            margin: 10px 0;
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #004d40;
+            margin: 10px 0;
+        }
+        p {
+            color: #333333;
+            margin-bottom: 15px;
+        }
+        .learn-more {
+            color: #00796b;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .learn-more::after {
+            content: '→';
+            margin-left: 5px;
+        }
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .quantity-selector input {
+            width: 50px;
+            padding: 5px;
+            margin: 0 10px;
+            text-align: center;
+        }
+        button {
+            background-color: #004d40;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #00695c;
+        }
+        .content h1{
+            margin-left: 90px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .payment-method {
+            margin-bottom: 15px;
+        }
+        .payment-method label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .payment-method input[type="text"],
+        .payment-method select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #thankYouModal {
+            text-align: center;
+        }
+        #thankYouModal h2 {
+            color: #004d40;
+        }
+        #thankYouModal p {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        #limitExceededModal {
+            text-align: center;
+        }
+        #limitExceededModal h2 {
+            color: #d32f2f;
+        }
+        #limitExceededModal p {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax-header">
+        <header>
+            <h2 class="logo">ACE KABOO</h2>
+            <nav class="navigation">
+                <a href="index.html" class="active">Home</a>
+                <a href="second.html">Seller</a>
+                <a href="third.html">Buyer</a>
+            </nav>
+        </header>
+        <div class="buyers-point">Buyers Point</div>
+    </div>
+
+    <div class="content">
+        <h1>Natural Energy Sources</h1>
+        <div class="container">
+            <div class="card">
+                <div class="icon solar">☀</div>
+                <h2>Solar</h2>
+                <div class="price">$0.10/kWh</div>
+                <p>Clean, renewable energy harnessed directly from the sun.</p>
+                <a href="#" class="learn-more">Learn more</a>
+                <div class="quantity-selector">
+                    <button onclick="changeQuantity('solar', -10)">-</button>
+                    <input type="number" id="solar-quantity" value="0" min="0" max="1000" step="10">
+                    <button onclick="changeQuantity('solar', 10)">+</button>
+                </div>
+                <button onclick="buyEnergy('Solar', 0.10)">Buy Solar Energy</button>
+            </div>
+            <div class="card">
+                <div class="icon wind">💨</div>
+                <h2>Wind</h2>
+                <div class="price">$0.08/kWh</div>
+                <p>Sustainable power generated by wind turbines.</p>
+                <a href="#" class="learn-more">Learn more</a>
+                <div class="quantity-selector">
+                    <button onclick="changeQuantity('wind', -10)">-</button>
+                    <input type="number" id="wind-quantity" value="0" min="0" max="1000" step="10">
+                    <button onclick="changeQuantity('wind', 10)">+</button>
+                </div>
+                <button onclick="buyEnergy('Wind', 0.08)">Buy Wind Energy</button>
+            </div>
+            <div class="card">
+                <div class="icon hydro">💧</div>
+                <h2>Hydro</h2>
+                <div class="price">$0.12/kWh</div>
+                <p>Renewable energy produced from flowing water.</p>
+                <a href="#" class="learn-more">Learn more</a>
+                <div class="quantity-selector">
+                    <button onclick="changeQuantity('hydro', -10)">-</button>
+                    <input type="number" id="hydro-quantity" value="0" min="0" max="1000" step="10">
+                    <button onclick="changeQuantity('hydro', 10)">+</button>
+                </div>
+                <button onclick="buyEnergy('Hydro', 0.12)">Buy Hydro Energy</button>
+            </div>
+            <div class="card">
+                <div class="icon geothermal">🔥</div>
+                <h2>Geothermal</h2>
+                <div class="price">$0.15/kWh</div>
+                <p>Heat energy extracted from beneath the Earth's surface.</p>
+                <a href="#" class="learn-more">Learn more</a>
+                <div class="quantity-selector">
+                    <button onclick="changeQuantity('geothermal', -10)">-</button>
+                    <input type="number" id="geothermal-quantity" value="0" min="0" max="1000" step="10">
+                    <button onclick="changeQuantity('geothermal', 10)">+</button>
+                </div>
+                <button onclick="buyEnergy('Geothermal', 0.15)">Buy Geothermal Energy</button>
+            </div>
+            <div class="card">
+                <div class="icon biomass">🌿</div>
+                <h2>Biomass</h2>
+                <div class="price">$0.11/kWh</div>
+                <p>Energy derived from organic matter and plant materials.</p>
+                <a href="#" class="learn-more">Learn more</a>
+                <div class="quantity-selector">
+                    <button onclick="changeQuantity('biomass', -10)">-</button>
+                    <input type="number" id="biomass-quantity" value="0" min="0" max="1000" step="10">
+                    <button onclick="changeQuantity('biomass', 10)">+</button>
+                </div>
+                <button onclick="buyEnergy('Biomass', 0.11)">Buy Biomass Energy</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirm Purchase</h2>
+            <p id="confirmMessage"></p>
+            <button onclick="showUserDetailsForm()">Confirm</button>
+            <button onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <div id="userDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>User Details</h2>
+            <form id="userDetailsForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email ID:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <button type="submit">Continue to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="paymentOptions" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Payment Options</h2>
+            <form id="paymentForm">
+                <div class="payment-method">
+                    <label for="paymentType">Select Payment Method:</label>
+                    <select id="paymentType" required>
+                        <option value="">Choose a payment method</option>
+                        <option value="upi">UPI Payment</option>
+                        <option value="netbanking">Net Banking</option>
+                    </select>
+                </div>
+                <div id="upiPayment" class="payment-method" style="display:none;">
+                    <label for="upiId">UPI ID:</label>
+                    <input type="text" id="upiId" placeholder="Enter your UPI ID">
+                </div>
+                <div id="netBanking" class="payment-method" style="display:none;">
+                    <label for="bankName">Select Bank:</label>
+                    <select id="bankName">
+                        <option value="">Choose your bank</option>
+                        <option value="sbi">State Bank of India</option>
+                        <option value="hdfc">HDFC Bank</option>
+                        <option value="icici">ICICI Bank</option>
+                        <option value="axis">Axis Bank</option>
+                    </select>
+                </div>
+                <button type="submit">Pay Now</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="shippingAddressModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Shipping Address</h2>
+            <form id="shippingAddressForm">
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="zipcode">Zip Code:</label>
+                    <input type="text" id="zipcode" required>
+                </div>
+                <button type="submit">Complete Order</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="thankYouModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Thank You!</h2>
+            <p>Thank you for buying green energy from Kaboo. Your order will be shipped in a few days.</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <div id="limitExceededModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Daily Limit Exceeded</h2>
+            <p>Daily buying limit is 1000 units. Please reduce the unit quantity or buy more tomorrow.</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function changeQuantity(type, change) {
+            const input = document.getElementById(`${type}-quantity`);
+            let newValue = parseInt(input.value) + change;
+            input.value = Math.max(0, Math.min(1000, newValue));
+        }
+
+        let currentPurchase = null;
+
+        function buyEnergy(type, price) {
+            const quantityInput = document.getElementById(`${type.toLowerCase()}-quantity`);
+            const amount = parseInt(quantityInput.value);
+            if (amount > 0) {
+                if (amount > 1000) {
+                    document.getElementById('limitExceededModal').style.display = 'block';
+                } else {
+                    const total = (amount * price).toFixed(2);
+                    currentPurchase = { type, amount, total };
+                    document.getElementById('confirmMessage').textContent = `Do you want to buy ${amount} kWh of ${type} energy for $${total}?`;
+                    document.getElementById('confirmModal').style.display = 'block';
+                }
+            } else {
+                alert("Please select a quantity greater than 0.");
+            }
+        }
+
+        function showUserDetailsForm() {
+            document.getElementById('confirmModal').style.display = 'none';
+            document.getElementById('userDetailsModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+            document.getElementById('userDetailsModal').style.display = 'none';
+            document.getElementById('paymentOptions').style.display = 'none';
+            document.getElementById('shippingAddressModal').style.display = 'none';
+            document.getElementById('thankYouModal').style.display = 'none';
+            document.getElementById('limitExceededModal').style.display = 'none';
+            currentPurchase = null;
+        }
+
+        // Close modal when clicking on <span> (x)
+        document.querySelectorAll('.close').forEach(closeBtn => {
+            closeBtn.onclick = closeModal;
+        });
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal();
+            }
+        }
+
+        document.getElementById('userDetailsForm').onsubmit = function(e) {
+            e.preventDefault();
+            document.getElementById('userDetailsModal').style.display = 'none';
+            document.getElementById('paymentOptions').style.display = 'block';
+        };
+
+        document.getElementById('paymentType').addEventListener('change', function() {
+            document.getElementById('upiPayment').style.display = this.value === 'upi' ? 'block' : 'none';
+            document.getElementById('netBanking').style.display = this.value === 'netbanking' ? 'block' : 'none';
+        });
+
+        document.getElementById('paymentForm').onsubmit = function(e) {
+            e.preventDefault();
+            alert('Payment Successful!');
+            document.getElementById('paymentOptions').style.display = 'none';
+            document.getElementById('shippingAddressModal').style.display = 'block';
+        };
+
+        document.getElementById('shippingAddressForm').onsubmit = function(e) {
+            e.preventDefault();
+            if (currentPurchase) {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const address = document.getElementById('address').value;
+                const city = document.getElementById('city').value;
+                const state = document.getElementById('state').value;
+                const zipcode = document.getElementById('zipcode').value;
+
+                document.getElementById('shippingAddressModal').style.display = 'none';
+                document.getElementById('thankYouModal').style.display = 'block';
+
+                document.getElementById(`${currentPurchase.type.toLowerCase()}-quantity`).value = 0;
+            }
+        };
+
+        let lastScrollTop = 0;
+        let ticking = false;
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    updateParallax(scrollTop);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        function updateParallax(scrollTop) {
+            let buyersPoint = document.querySelector('.buyers-point');
+            let speed = 1; // Set speed to 1 for smoother effect
+            let yOffset = scrollTop * speed;
+            buyersPoint.style.transform = `translate(-50%, calc(-50% + ${yOffset}px))`;
+        }
+        document.getElementById('shippingAddressForm').onsubmit = function(e) {
+            e.preventDefault();
+            if (currentPurchase) {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const address = document.getElementById('address').value;
+                const city = document.getElementById('city').value;
+                const state = document.getElementById('state').value;
+                const zipcode = document.getElementById('zipcode').value;
+
+                fetch('http://127.0.0.1:5000/buy', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        type: currentPurchase.type,
+                        amount: currentPurchase.amount,
+                        total: currentPurchase.total,
+                        name: name,
+                        email: email,
+                        address: address,
+                        city: city,
+                        state: state,
+                        zipcode: zipcode
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        document.getElementById('thankYouModal').style.display = 'block';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        };
+
+    </script>
+</body>
+</html>

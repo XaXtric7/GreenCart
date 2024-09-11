@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f9f9f9;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 15;
+}
+
+.logo {
+    font-size: 2em;
+    color: #359381;
+    margin-right: 320px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #359381;
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin: 0 10px;
+    transition: background 0.3s, color 0.3sec;
+}
+
+.navigation a:hover,
+.navigation a.active {
+    background: #359381;
+    color: #f9f9f9;
+}
+
+.parallax {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#text {
+    position: absolute;
+    font-size: 5em;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+}
+
+.parallax img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 0;
+    /* Make sure parallax images stay behind */
+}
+
+
+.sec {
+    padding: 100px;
+    color: #fff;
+}
+
+.sec2 {
+    padding: 100px;
+    color: #fff;
+}
+
+.sec2 p {
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 300;
+}
+
+.gradient-background {
+    position: relative;
+    /* Make sure it is positioned relative */
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #003329 50%, #4ade80 100%);
+    background-size: cover;
+    /* Ensure the background gradient covers the area */
+    transition: background 0.5s ease;
+    z-index: 1;
+    /* Adjust the z-index to bring the gradient forward */
+}
+
+
+.sec {
+    padding: 100px;
+    color: #fff;
+}
+
+.energy-sources {
+    padding: 2rem;
+}
+
+.energy-sources h1 {
+    color: #fff;
+}
+
+.sec h2 {
+    font-size: 3.4em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.sec p {
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 300;
+}
+
+.container {
+    max-width: 100%;
+    padding: 2rem;
+    overflow-x: hidden;
+    position: relative;
+}
+
+h1 {
+    color: #166534;
+    font-size: 2.5em;
+    padding-left: 80px;
+    margin-bottom: 1.5rem;
+    z-index: 6;
+}
+
+.card-container-wrapper {
+    position: relative;
+}
+
+.card-container {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: hidden;
+    padding-bottom: 1rem;
+    scroll-behavior: smooth;
+}
+
+.card {
+    flex: 0 0 auto;
+    width: 300px;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.card h2 {
+    color: #15803d;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #16a34a;
+    margin-bottom: 0.5rem;
+}
+
+.unit {
+    font-size: 0.875rem;
+    color: #22c55e;
+}
+
+.description {
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.learn-more {
+    display: flex;
+    align-items: center;
+    color: #22c55e;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.learn-more:hover {
+    color: #15803d;
+    transform: translateX(5px);
+}
+
+.learn-more svg {
+    margin-left: 0.5rem;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.arrow:hover {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}
+
+.arrow svg {
+    width: 24px;
+    height: 24px;
+    fill: #15803d;
+}

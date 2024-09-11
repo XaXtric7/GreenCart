@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACE KABOO - Energy Trading Platform</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f9f9f9;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 15;
+            
+        }
+
+        .logo {
+            font-size: 2em;
+            color: #359381;
+        }
+
+        .navigation {
+            display: flex;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 6px 15px;
+            border-radius: 20px;
+            margin: 0 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .navigation a:hover,
+        .navigation a.active {
+            background: #359381;
+            color: #f9f9f9;
+        }
+        section {
+    max-height: 100vh; /* Ensures section doesn't exceed the view height */
+    overflow: hidden; /* Prevents vertical scrolling */
+}
+
+        .parallax {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #text {
+            position: absolute;
+            font-size: 5em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+        }
+
+        .parallax img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+
+        .gradient-background {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #003329 50%, #4ade80 100%);
+            background-size: cover;
+            background-attachment: fixed;
+            transition: background 0.5s ease;
+            z-index: 1;
+        }
+
+        .sec {
+            padding: 100px;
+            color: #fff;
+        }
+
+        .sec h2 {
+            font-size: 3.4em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .sec p {
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: 300;
+        }
+
+        .energy-sources {
+            padding: 2rem;
+        }
+
+        .energy-sources h1 {
+            color: #fff;
+            font-size: 2.5em;
+            padding-left: 80px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-container-wrapper {
+            position: relative;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: hidden;
+            padding-bottom: 1rem;
+            scroll-behavior: smooth;
+        }
+
+        .card {
+            flex: 0 0 auto;
+            width: 300px;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .card h2 {
+            color: #15803d;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #16a34a;
+            margin-bottom: 0.5rem;
+        }
+
+        .unit {
+            font-size: 0.875rem;
+            color: #22c55e;
+        }
+
+        .description {
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        .learn-more {
+            display: flex;
+            align-items: center;
+            color: #22c55e;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .learn-more:hover {
+            color: #15803d;
+            transform: translateX(5px);
+        }
+
+        .learn-more svg {
+            margin-left: 0.5rem;
+        }
+      
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .arrow:hover {
+            background-color: rgba(255, 255, 255, 1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+        .arrow svg {
+            width: 24px;
+            height: 24px;
+            fill: #15803d;
+        }
+
+        .sec2 {
+            padding: 100px;
+            color: #fff;
+        }
+
+        .sec2 p {
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: 300;
+        }
+
+        .buyer-section, .seller-section {
+            padding: 100px;
+            color: #fff;
+        }
+
+        .buyer-title, .seller-title {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .buyer-content, .seller-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .buyer-image, .seller-image {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .buyer-text, .seller-text {
+            flex: 1;
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        .learn-more-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #359381;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more-btn:hover {
+            background-color: #2c7a6b;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2 class="logo">ACE KABOO</h2>
+        <nav class="navigation">
+            <a href="index.html" class="active">Home</a>
+            <a href="second.html">Seller</a>
+            <a href="third.html">Buyer</a>
+        </nav>
+    </header>
+<div class = "scroll_lock">
+    <section class="parallax">
+        <img src="hill1.png" id="hill1">
+        <img src="hill2.png" id="hill2">
+        <img src="hill3.png" id="hill3">
+        <img src="hill4.png" id="hill4">
+        <img src="hill5.png" id="hill5">
+        <img src="tree.png" id="tree">
+        <h2 id="text">Energy Trading Platform</h2>
+        <img src="leaf.png" id="leaf">
+        <img src="plant.png" id="plant">
+    </section>
+
+    <div class="gradient-background">
+        <section class="sec">
+            <h2>About Us</h2>
+            <p>
+                Welcome to GreenCart, a revolutionary green energy trading platform designed
+                to harness the power of renewable resources. If you generate excess energy
+                through solar panels, wind turbines, or other natural sources, our platform
+                lets you sell those extra units effortlessly. For buyers, we offer a unique
+                opportunity to purchase green energy directly from producers, ensuring transparency,
+                sustainability, and cost-effectiveness.
+            </p>
+            <p>
+                Our app operates like a stock market for energy—connecting buyers and sellers in
+                real-time to facilitate smooth transactions. With a user-friendly interface and
+                secure payment system, we empower you to be part of the clean energy revolution
+                while promoting a greener planet. Whether you're looking to monetize your renewable
+                energy or reduce your reliance on non-renewable sources, GreenCart is your gateway
+                to sustainable, eco-friendly energy trading.
+            </p>
+        </section>
+
+        <div class="energy-sources">
+            <h1>Natural Energy Units</h1>
+            <div class="card-container-wrapper">
+                <button class="arrow arrow-left" id="arrowLeft">&#8249;</button>
+                <div class="card-container" id="cardContainer">
+                    <!-- Cards will be dynamically inserted here -->
+                </div>
+                <button class="arrow arrow-right" id="arrowRight">&#8250;</button>
+            </div>
+        </div>
+
+        <section id="buyer" class="buyer-section">
+            <h2 class="buyer-title">Buyer</h2>
+            <div class="buyer-content">
+                <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Buyer related image" class="buyer-image">
+                <div class="buyer-text">
+                    <p>
+                        Welcome to ACE KABOO—your gateway to purchasing clean, renewable energy directly from producers. Our
+                        platform connects you with suppliers who have generated excess natural energy through solar panels, wind
+                        turbines, and other green sources. By buying energy units at competitive, market-driven prices, you gain
+                        access to sustainable power while contributing to a greener planet. Enjoy a seamless, transparent purchasing
+                        experience, ensuring that your energy needs are met with eco-friendly solutions, all while supporting
+                        renewable energy producers.
+                    </p>
+                    <a href="third.html" class="learn-more-btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="seller" class="seller-section">
+            <h2 class="seller-title">Seller</h2>
+            <div class="seller-content">
+                <div class="seller-text">
+                    <p>
+                        As a seller on ACE KABOO, you have the opportunity to monetize your excess renewable energy production.
+                        Whether you're a homeowner with solar panels or a business with a wind turbine, our platform allows you
+                        to easily list and sell your surplus energy units.
+                    </p>
+                    <p>
+                        By joining our marketplace, you're not just earning from your green energy investment—you're also
+                        contributing to a more sustainable future. Our user-friendly interface makes it simple to track your
+                        sales, manage your listings, and connect with potential buyers.
+                    </p>
+                    <p>
+                        Embrace the power of peer-to-peer energy trading and become a key player in the renewable energy
+                        revolution. With ACE KABOO, you're not just selling energy; you're powering a cleaner, greener world.
+                    </p>
+                    <p>
+                        Join us today and start turning your excess energy into profit while making a positive impact on the
+                        environment.
+                    </p>
+                    <a href="second.html" class="learn-more-btn">Learn More</a>
+                </div>
+                <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Green energy being sold" class="seller-image">
+            </div>
+        </section>
+    </div>
+</div>
+    <script>
+        let text = document.getElementById('text');
+        let leaf = document.getElementById('leaf');
+        let hill1 = document.getElementById('hill1');
+        let hill4 = document.getElementById('hill4');
+        let hill5 = document.getElementById('hill5');
+
+        window.addEventListener('scroll', () => {
+            let value = window.scrollY;
+
+            text.style.marginTop = value * 3 + 'px';
+            leaf.style.top = value * -2 + 'px';
+            leaf.style.left = value * 1.5 + 'px';
+            hill5.style.left = value * -1 + 'px';
+            hill4.style.left = value * -1.5 + 'px';
+            hill1.style.top = value * 1 + 'px';
+        });
+
+        const energySources = [
+            { name: 'Solar', price: 0.10, unit: 'kWh', icon: 'sun', color: '#fef08a', iconColor: '#facc15', description: 'Clean, renewable energy harnessed directly from the sun.' },
+            { name: 'Wind', price: 0.08, unit: 'kWh', icon: 'wind', color: '#dbeafe', iconColor: '#3b82f6', description: 'Sustainable power generated by wind turbines.' },
+            { name: 'Hydro', price: 0.12, unit: 'kWh', icon: 'droplet', color: '#cffafe', iconColor: '#06b6d4', description: 'Renewable energy produced from flowing water.' },
+            { name: 'Geothermal', price: 0.15, unit: 'kWh', icon: 'flame', color: '#fee2e2', iconColor: '#ef4444', description: 'Heat energy extracted from beneath the Earth\'s surface.' },
+            { name: 'Biomass', price: 0.11, unit: 'kWh', icon: 'tree', color: '#dcfce7', iconColor: '#22c55e', description: 'Energy derived from organic matter and plant-based materials.' },
+            { name: 'Tidal', price: 0.18, unit: 'kWh', icon: 'wave', color: '#e0e7ff', iconColor: '#6366f1', description: 'Power generated from the natural rise and fall of ocean tides.' }
+        ];
+
+        const cardContainer = document.getElementById('cardContainer');
+        const arrowLeft = document.getElementById('arrowLeft');
+        const arrowRight = document.getElementById('arrowRight');
+
+        function createCard(source) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="card-content">
+                    <div class="icon" style="background-color: ${source.color};">
+                        ${getIcon(source.icon, source.iconColor)}
+                    </div>
+                    <h2>${source.name}</h2>
+                    <div class="price">
+                        $${source.price.toFixed(2)}<span class="unit">/${source.unit}</span>
+                    </div>
+                    <p class="description">${source.description}</p>
+                    <div class="learn-more">
+                        Learn more
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        function getIcon(name, color) {
+            const icons = {
+                sun: '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>',
+                wind: '<path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>',
+                droplet: '<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>',
+                flame: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>',
+                tree: '<path d="M17 20h5v-2a3 3 0 0 0-5.356-1.857M14 20h-4m-2 0H3v-2a3 3 0 0 1 5.356-1.857M15 7a3 3 0 0 1-6 0 3 3 0 0 1 6 0Z"></path><path d="M21 15v2a3 3 0 0 1-6 0v-2a3 3 0 0 1 6 0ZM9 15v2a3 3 0 0 1-6 0v-2a3 3 0 0 1 6 0Z"></path>',
+                wave: '<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>'
+            };
+            return `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icons[name]}</svg>`;
+        }
+
+        energySources.forEach(source => {
+            cardContainer.appendChild(createCard(source));
+        });
+
+        function scrollCards(direction) {
+            const scrollAmount = cardContainer.offsetWidth;
+            cardContainer.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        arrowLeft.addEventListener('click', () => scrollCards(-1));
+        arrowRight.addEventListener('click', () => scrollCards(1));
+
+        cardContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            cardContainer.scrollLeft += e.deltaY;
+        });
+    </script>
+</body>
+
+</html>
