@@ -94,9 +94,7 @@ Greencart allows green energy producers to sell their surplus energy, contributi
 
 ## Site Preview
 
-```bash
-   ![GreenCart gif](https://github.com/user-attachments/assets/74059085-5661-43a5-9ab9-6a52a7934111)
-```
+![GreenCart gif](https://github.com/user-attachments/assets/74059085-5661-43a5-9ab9-6a52a7934111)
 
 ## Contributing
 
