@@ -48,7 +48,26 @@ Greencart allows green energy producers to sell their surplus energy, contributi
    cd greencart
    ```
 
-3. Install the required Python packages:
+3. Installing and verifying pip:
+
+   ```bash
+   python -m ensurepip --upgrade
+   curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+   python get-pip.py
+   pip --version
+   *run in cmd*
+   ```
+
+4. Commands to run in SQL cmd:
+
+   ```bash
+   use project
+   Select * from contributions;
+   Select * from purchases;
+   *To view tables*
+   ```
+
+5. Install the required Python packages:
 
    ```bash
    python -m pip show Flask
@@ -57,11 +76,11 @@ Greencart allows green energy producers to sell their surplus energy, contributi
    pip install flask-cors
    ```
 
-4. Set up the SQL database (e.g., MySQL, PostgreSQL):
+6. Set up the SQL database (e.g., MySQL, PostgreSQL):
 
    - Create a new database and configure the connection details in the backend settings.
 
-5. Run the application:
+7. Run the application:
    ```bash
    python app.py
    ```
