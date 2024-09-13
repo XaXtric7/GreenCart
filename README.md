@@ -92,6 +92,12 @@ Greencart allows green energy producers to sell their surplus energy, contributi
 3. **Blockchain**: All transactions are recorded in a blockchain to ensure security and transparency.
 4. **Delivery**: The government agency manages the delivery process once a transaction is completed.
 
+## Site Preview
+
+```bash
+   ![GreenCart gif](https://github.com/user-attachments/assets/74059085-5661-43a5-9ab9-6a52a7934111)
+```
+
 ## Contributing
 
 We welcome contributions! Please follow these steps to contribute:
