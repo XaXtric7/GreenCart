@@ -96,6 +96,10 @@ Greencart allows green energy producers to sell their surplus energy, contributi
 
 ![GreenCart gif](https://github.com/user-attachments/assets/917d066a-71f0-4fee-951a-56aa628a8160)
 
+## PPT for Hackathon
+
+[Tech4Tommorow_hackathon.pptx](https://github.com/user-attachments/files/17082889/Tech4Tommorow_hackathon.pptx)
+
 ## Contributing
 
 We welcome contributions! Please follow these steps to contribute:
